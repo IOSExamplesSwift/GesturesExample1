@@ -45,6 +45,14 @@ class ViewController: UIViewController {
             methodsStatus.text = "touches moved"
             touchStatus.text = "\(touchCount) touches"
             tapStatus.text = "\(tapCount) taps"
+            
+            if let eventObj = event, let predictedTouches = eventObj.predictedTouches(for: touch) {
+                for predictedTouch in predictedTouches {
+                    let point = predictedTouch.location(in: self.view)
+                    print("Predicated locations x = \(point.x)., Y = \(point.y)")
+                }
+                print("=============")
+            }
         }
     }
     
